@@ -1,18 +1,56 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# ==========================================================================
+# guato_ba — repositório de CÓDIGO + metadados LEVES do estudo.
+#
+# Entram no repo: código (.py / .ipynb), docs (.md), logs de execução,
+# e os artefatos LEVES e informativos (históricos de treino, melhores
+# hiperparâmetros, curvas, tabelas do artigo, estudos Optuna).
+#
+# NÃO entram: dados brutos, patches, rasters, vetores e pesos treinados
+# (data/, dados/, results/, *.npy, *.tif, *.gpkg, *.pkl ...). Esses ficam
+# só no disco / QGIS e são publicados à parte (Zenodo). Ver DATA.md.
+# ==========================================================================
 
-# Other files and folders
-.settings/
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# ---- Diretórios pesados (dados/saídas): nunca versionar ----
+data/
+dados/
+"dados "/
+results/
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# ---- Binários pesados por extensão ----
+*.npy
+*.npz
+*.tif
+*.tiff
+*.tif.aux.xml
+*.gpkg
+*.gpkg-shm
+*.gpkg-wal
+*.nc
+*.zip
+
+# ---- Pesos de modelos (grandes) ----
+*.pkl
+*.pt
+*.pth
+*.h5
+# checkpoints temporários de HPO (dirs inteiros)
+hpo/_tmp_resnet34_siam/
+hpo/_tmp_unet/
+
+# ---- Artigo / LaTeX (dissertação; fora do pacote de código) ----
+artigo/
+*.aux
+*.out
+*.synctex.gz
+
+# --------------------------------------------------------------------------
+# Observação: os metadados leves de deeplearning/ (historico*.csv, curva.png,
+# hpo_best.json), machine_learning/ (hpo_best.json), hpo/*.db e as tabelas
+# de results/ são incluídos explicitamente (git add -f) — ver README.
+# --------------------------------------------------------------------------

@@ -1,0 +1,29 @@
+# guato_ba — dependências (detectadas dos imports do código).
+# Ambiente de referência: conda env "geospatial" (Python 3.11).
+# Versões não fixadas de propósito; o torch deve casar com o CUDA da máquina.
+
+# --- numérico / dados ---
+numpy
+pandas
+scipy
+joblib
+
+# --- geoespacial ---
+rasterio
+geopandas
+shapely
+affine
+xarray
+pystac_client        # acesso ao STAC do BDC (cubos Sentinel-2 / Landsat)
+
+# --- machine learning ---
+scikit-learn
+xgboost
+optuna               # HPO (estudos .db versionados em hpo/)
+
+# --- deep learning ---
+torch
+torchvision
+
+# --- visualização ---
+matplotlib

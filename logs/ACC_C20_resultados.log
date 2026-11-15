@@ -1,0 +1,7 @@
+[12:34:30] ========== ACUMULADO 2024 (128/753) nuvem<20.0% / area_valida>=80% ==========
+[16:02:25] [_t3_753_c20] acumulado: 1,975,023 ha | cobertura 90.1%
+[16:04:14] [_t3_753_c20][pantanal_inteiro] vs REF IoU=0.5584 rec=0.869 prec=0.610 | vs HLS IoU=0.6636 rec=0.694 prec=0.938 | mod=1,975,023ha
+[16:04:24] [_t3_753_c20][analisado] vs REF IoU=0.5749 rec=0.910 prec=0.610 | vs HLS IoU=0.7238 rec=0.760 prec=0.938 | mod=1,975,021ha
+[16:04:24] CSV salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/artigo/acumulado2024_128x753_c20_vs_ref_hls.csv
+[16:04:50] VETOR salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/acumulado/acum2024_unet_128x753_c20.gpkg | 30,504 poligonos | 1,975,023 ha
+[16:04:50] ========== ACC_C20_OK ==========

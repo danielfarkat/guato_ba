@@ -1,0 +1,40 @@
+[01:46:15] ===== IoU TILE-A-TILE (128/753) =====
+[01:48:07] [21KTB] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.000 prec_HLS=0.000 | mod=0ha
+[01:48:19] [21KUA] IoU_ref=0.824 prec_ref=0.865 | IoU_HLS=0.813 prec_HLS=0.987 | mod=72,623ha
+[01:48:31] [21KUB] IoU_ref=0.892 prec_ref=0.992 | IoU_HLS=0.588 prec_HLS=0.989 | mod=17,643ha
+[01:48:43] [21KUR] IoU_ref=0.734 prec_ref=0.785 | IoU_HLS=0.675 prec_HLS=0.861 | mod=4,771ha
+[01:48:56] [21KUS] IoU_ref=0.775 prec_ref=0.796 | IoU_HLS=0.713 prec_HLS=0.964 | mod=4,562ha
+[01:49:09] [21KUT] IoU_ref=0.455 prec_ref=0.457 | IoU_HLS=0.920 prec_HLS=0.963 | mod=86,871ha
+[01:49:20] [21KUU] IoU_ref=0.888 prec_ref=0.950 | IoU_HLS=0.717 prec_HLS=0.758 | mod=32,443ha
+[01:49:32] [21KVA] IoU_ref=0.555 prec_ref=0.562 | IoU_HLS=0.467 prec_HLS=0.966 | mod=26,847ha
+[01:49:45] [21KVB] IoU_ref=0.478 prec_ref=0.490 | IoU_HLS=0.053 prec_HLS=0.897 | mod=15,305ha
+[01:49:57] [21KVR] IoU_ref=0.728 prec_ref=0.743 | IoU_HLS=0.495 prec_HLS=0.839 | mod=4,932ha
+[01:50:09] [21KVS] IoU_ref=0.742 prec_ref=0.785 | IoU_HLS=0.736 prec_HLS=0.972 | mod=82,447ha
+[01:50:22] [21KVT] IoU_ref=0.847 prec_ref=0.871 | IoU_HLS=0.866 prec_HLS=0.960 | mod=409,357ha
+[01:50:34] [21KVU] IoU_ref=0.843 prec_ref=0.873 | IoU_HLS=0.846 prec_HLS=0.960 | mod=253,921ha
+[01:50:46] [21KVV] IoU_ref=0.937 prec_ref=0.972 | IoU_HLS=0.774 prec_HLS=0.980 | mod=251,084ha
+[01:50:58] [21KWA] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.323 prec_HLS=0.922 | mod=18,305ha
+[01:51:11] [21KWB] IoU_ref=0.414 prec_ref=0.443 | IoU_HLS=0.724 prec_HLS=0.981 | mod=217,048ha
+[01:51:23] [21KWT] IoU_ref=0.416 prec_ref=0.424 | IoU_HLS=0.674 prec_HLS=0.938 | mod=9,475ha
+[01:51:35] [21KWU] IoU_ref=0.214 prec_ref=0.216 | IoU_HLS=0.547 prec_HLS=0.886 | mod=10,605ha
+[01:51:46] [21KWV] IoU_ref=0.059 prec_ref=0.059 | IoU_HLS=0.602 prec_HLS=0.919 | mod=49,091ha
+[01:51:58] [21KXA] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.183 prec_HLS=0.385 | mod=1,444ha
+[01:52:10] [21KXB] IoU_ref=0.099 prec_ref=0.102 | IoU_HLS=0.517 prec_HLS=0.916 | mod=11,985ha
+[01:52:22] [21KXT] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.592 prec_HLS=0.855 | mod=8,471ha
+[01:52:34] [21KXU] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.387 prec_HLS=0.769 | mod=15,856ha
+[01:52:46] [21KXV] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.350 prec_HLS=0.481 | mod=5,574ha
+[01:52:58] [21KYA] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.057 prec_HLS=0.199 | mod=772ha
+[01:53:09] [21KYB] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.010 prec_HLS=0.190 | mod=119ha
+[01:53:22] [21KYU] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.000 prec_HLS=0.000 | mod=0ha
+[01:53:34] [21KYV] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.364 prec_HLS=0.881 | mod=135ha
+[01:53:46] [21LTC] IoU_ref=0.000 prec_ref=0.000 | IoU_HLS=0.000 prec_HLS=0.000 | mod=28ha
+[01:53:58] [21LUC] IoU_ref=0.061 prec_ref=0.062 | IoU_HLS=0.426 prec_HLS=0.851 | mod=1,223ha
+[01:54:10] [21LVC] IoU_ref=0.171 prec_ref=0.174 | IoU_HLS=0.708 prec_HLS=0.952 | mod=21,226ha
+[01:54:22] [21LWC] IoU_ref=0.526 prec_ref=0.546 | IoU_HLS=0.810 prec_HLS=0.963 | mod=19,023ha
+[01:54:34] [21LXC] IoU_ref=0.691 prec_ref=0.740 | IoU_HLS=0.766 prec_HLS=0.949 | mod=27,569ha
+[01:54:46] [51MZR] IoU_ref=0.642 prec_ref=0.684 | IoU_HLS=0.257 prec_HLS=0.804 | mod=6,106ha
+[01:54:46] ----- GLOBAL -----
+[01:54:55] [GLOBAL pantanal_inteiro] vs REF: IoU=0.6107 OE=0.229 CE=0.254 prec=0.746 | vs HLS: IoU=0.5028 OE=0.486 CE=0.041 prec=0.959
+[01:55:04] [GLOBAL analisado] vs REF: IoU=0.7171 OE=0.052 CE=0.254 prec=0.746 | vs HLS: IoU=0.6786 OE=0.301 CE=0.041 prec=0.959
+[01:55:04] CSV salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/artigo/acumulado2024_128x753_por_tile_iou.csv (34 tiles com análise)
+[01:55:04] ===== PERTILE_OK =====

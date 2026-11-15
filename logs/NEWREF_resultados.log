@@ -1,0 +1,6 @@
+[13:55:53] ===== reconstruindo test2025 com a NOVA referência =====
+[13:56:15] novo test2025: 710 patches | 17 com fogo | pixels fogo=166,950 (0.395% dos válidos)
+[13:56:28] [GN+SpecAug | NOVA ref] OOT2025 THR=0.50: IoU=0.7925 OE=0.187 CE=0.026 rec=0.813 prec=0.969
+[13:56:38] [GN+SpecAug | NOVA ref] OOT2025 MELHOR THR=0.10: IoU=0.8067 OE=0.138 CE=0.069 rec=0.862 prec=0.926
+[13:56:38]   (referência ANTERIOR dava: THR0.50 IoU=0.6835 / melhor THR0.10 IoU=0.6996)
+[13:56:38] ===== NEWREF_OK =====

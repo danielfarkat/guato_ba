@@ -1,0 +1,3 @@
+juiz,IoU,F1,OE,CE,area_modelo_ha,area_ref_ha
+pantanal_inteiro,0.5954,0.7464,0.229,0.295,1477254,1386236
+area_analisada,0.6960,0.8207,0.052,0.363,1477251,1126880

@@ -1,0 +1,97 @@
+# TIER Mon Oct 19 00:05:02 UTC 2026
+[00:05:05] ========== TIER 1 iniciado ==========
+[00:05:16] [baseline (a)] OOT2025 THR=0.50: IoU=0.6615 OE=0.307 CE=0.048 rec=0.693 prec=0.936
+[00:05:16]   --- varredura THR [baseline (a), THR calibrado] ---
+[00:05:16]     THR=0.05: IoU=0.6536 OE=0.250 CE=0.147 rec=0.750 prec=0.836
+[00:05:17]     THR=0.10: IoU=0.6629 OE=0.265 CE=0.108 rec=0.735 prec=0.872
+[00:05:17]     THR=0.15: IoU=0.6653 OE=0.274 CE=0.091 rec=0.726 prec=0.889
+[00:05:17]     THR=0.20: IoU=0.6660 OE=0.281 CE=0.080 rec=0.719 prec=0.900
+[00:05:18]     THR=0.25: IoU=0.6662 OE=0.286 CE=0.071 rec=0.714 prec=0.909
+[00:05:18]     THR=0.30: IoU=0.6659 OE=0.291 CE=0.065 rec=0.709 prec=0.916
+[00:05:19]     THR=0.35: IoU=0.6649 OE=0.295 CE=0.060 rec=0.705 prec=0.922
+[00:05:19]     THR=0.40: IoU=0.6640 OE=0.299 CE=0.056 rec=0.701 prec=0.927
+[00:05:20]     THR=0.45: IoU=0.6628 OE=0.303 CE=0.052 rec=0.697 prec=0.931
+[00:05:20]     THR=0.50: IoU=0.6615 OE=0.307 CE=0.048 rec=0.693 prec=0.936
+[00:05:20]     THR=0.55: IoU=0.6600 OE=0.311 CE=0.044 rec=0.689 prec=0.940
+[00:05:21]     THR=0.60: IoU=0.6586 OE=0.315 CE=0.040 rec=0.685 prec=0.945
+[00:05:21]     THR=0.65: IoU=0.6569 OE=0.319 CE=0.036 rec=0.681 prec=0.949
+[00:05:22]     THR=0.70: IoU=0.6546 OE=0.324 CE=0.033 rec=0.676 prec=0.954
+[00:05:22]     THR=0.75: IoU=0.6519 OE=0.329 CE=0.029 rec=0.671 prec=0.959
+[00:05:23]     THR=0.80: IoU=0.6481 OE=0.336 CE=0.025 rec=0.664 prec=0.964
+[00:05:23]     THR=0.85: IoU=0.6424 OE=0.345 CE=0.020 rec=0.655 prec=0.970
+[00:05:23]     THR=0.90: IoU=0.6329 OE=0.358 CE=0.015 rec=0.642 prec=0.977
+[00:05:24]     THR=0.95: IoU=0.6129 OE=0.382 CE=0.009 rec=0.618 prec=0.986
+[00:05:24]   >>> [baseline (a), THR calibrado] MELHOR THR=0.25: IoU=0.6662 OE=0.286 CE=0.071 rec=0.714 prec=0.909
+[00:05:28] [AdaBN] estatísticas de 18 camadas BatchNorm recomputadas em dados de 2025
+[00:05:33] [AdaBN] OOT2025 THR=0.50: IoU=0.0536 OE=0.042 CE=16.865 rec=0.958 prec=0.054
+[00:05:33]   --- varredura THR [AdaBN, THR calibrado] ---
+[00:05:33]     THR=0.05: IoU=0.0315 OE=0.034 CE=29.723 rec=0.966 prec=0.031
+[00:05:34]     THR=0.10: IoU=0.0365 OE=0.036 CE=25.383 rec=0.964 prec=0.037
+[00:05:34]     THR=0.15: IoU=0.0398 OE=0.037 CE=23.205 rec=0.963 prec=0.040
+[00:05:34]     THR=0.20: IoU=0.0423 OE=0.038 CE=21.736 rec=0.962 prec=0.042
+[00:05:35]     THR=0.25: IoU=0.0445 OE=0.039 CE=20.620 rec=0.961 prec=0.045
+[00:05:35]     THR=0.30: IoU=0.0464 OE=0.039 CE=19.697 rec=0.961 prec=0.046
+[00:05:36]     THR=0.35: IoU=0.0482 OE=0.040 CE=18.899 rec=0.960 prec=0.048
+[00:05:36]     THR=0.40: IoU=0.0500 OE=0.041 CE=18.178 rec=0.959 prec=0.050
+[00:05:37]     THR=0.45: IoU=0.0518 OE=0.041 CE=17.504 rec=0.959 prec=0.052
+[00:05:37]     THR=0.50: IoU=0.0536 OE=0.042 CE=16.865 rec=0.958 prec=0.054
+[00:05:37]     THR=0.55: IoU=0.0556 OE=0.042 CE=16.241 rec=0.958 prec=0.056
+[00:05:38]     THR=0.60: IoU=0.0576 OE=0.043 CE=15.630 rec=0.957 prec=0.058
+[00:05:38]     THR=0.65: IoU=0.0597 OE=0.043 CE=15.017 rec=0.957 prec=0.060
+[00:05:39]     THR=0.70: IoU=0.0621 OE=0.044 CE=14.398 rec=0.956 prec=0.062
+[00:05:39]     THR=0.75: IoU=0.0648 OE=0.045 CE=13.754 rec=0.955 prec=0.065
+[00:05:40]     THR=0.80: IoU=0.0680 OE=0.045 CE=13.049 rec=0.955 prec=0.068
+[00:05:40]     THR=0.85: IoU=0.0719 OE=0.046 CE=12.262 rec=0.954 prec=0.072
+[00:05:40]     THR=0.90: IoU=0.0775 OE=0.047 CE=11.288 rec=0.953 prec=0.078
+[00:05:41]     THR=0.95: IoU=0.0872 OE=0.050 CE=9.892 rec=0.950 prec=0.088
+[00:05:41]   >>> [AdaBN, THR calibrado] MELHOR THR=0.95: IoU=0.0872 OE=0.050 CE=9.892 rec=0.950 prec=0.088
+[00:05:41] ========== RESUMO TIER 1 ==========
+[00:05:41]   baseline (a)   THR0.50 : IoU=0.6615  OE=0.307  CE=0.048
+[00:05:41]   baseline (a)   THR0.25* : IoU=0.6662  OE=0.286  CE=0.071
+[00:05:41]   AdaBN          THR0.50 : IoU=0.0536  OE=0.042  CE=16.865
+[00:05:41]   AdaBN          THR0.95* : IoU=0.0872  OE=0.050  CE=9.892
+[00:05:41] ========== TIER1_OK ==========
+[tier2.sh] inicio Mon Oct 19 00:13:50 UTC 2026 PID=213927
+[00:13:52] ########## TIER2 GroupNorm | GUATO_NORM=gn GUATO_SPECAUG=0 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t2_gn ##########
+[02:31:01] [GroupNorm] treino: 200 épocas (rodou todas) | best val_loss=0.3902@197 | val_IoU(honesta)=0.9694@173
+[02:31:09] [GroupNorm] OOT2025 THR=0.50: IoU=0.6018 OE=0.382 CE=0.028 rec=0.618 prec=0.957
+[02:31:16] [GroupNorm] OOT2025 MELHOR THR=0.05: IoU=0.6358 OE=0.329 CE=0.056 rec=0.671 prec=0.923
+[02:31:16] [GroupNorm] FIM
+[02:31:20] ########## TIER2 SpecAug | GUATO_NORM=bn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t2_specaug ##########
+[06:40:33] [SpecAug] treino: 200 épocas (rodou todas) | best val_loss=0.4192@192 | val_IoU(honesta)=0.9578@195
+[06:40:42] [SpecAug] OOT2025 THR=0.50: IoU=0.5879 OE=0.287 CE=0.212 rec=0.713 prec=0.770
+[06:40:49] [SpecAug] OOT2025 MELHOR THR=0.90: IoU=0.6190 OE=0.329 CE=0.084 rec=0.671 prec=0.889
+[06:40:49] [SpecAug] FIM
+[06:40:54] ########## TIER2 GN+SpecAug | GUATO_NORM=gn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t2_gn_specaug ##########
+[11:13:46] [GN+SpecAug] treino: 200 épocas (rodou todas) | best val_loss=0.3986@188 | val_IoU(honesta)=0.9625@197
+[11:13:56] [GN+SpecAug] OOT2025 THR=0.50: IoU=0.6835 OE=0.301 CE=0.023 rec=0.699 prec=0.969
+[11:14:02] [GN+SpecAug] OOT2025 MELHOR THR=0.10: IoU=0.6996 OE=0.259 CE=0.060 rec=0.741 prec=0.926
+[11:14:02] [GN+SpecAug] FIM
+[tier2.sh] ===== TIER2_OK ===== Mon Oct 19 11:14:04 UTC 2026
+[exp_posfrac] aguardando FINAL_OK antes de usar a GPU... Mon Oct 19 13:50:20 UTC 2026
+[exp_posfrac] GPU liberada, iniciando Mon Oct 19 15:19:20 UTC 2026
+[15:19:43] ########## TIER2 128pos753neg_GNSpec | GUATO_NORM=gn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t3_128pos_753neg ##########
+[exp_128x500] aguardando POSFRAC_OK (fim do 128/753) antes de usar a GPU... Mon Oct 19 19:21:48 UTC 2026
+[exp_128x500] GPU liberada, iniciando Mon Oct 19 19:21:48 UTC 2026
+[19:22:11] ########## TIER2 128pos500neg_GNSpec | GUATO_NORM=gn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t3_128pos_500neg ##########
+[exp_128x500] aguardando fim do experimento anterior (128/753) para usar a GPU... Mon Oct 19 19:23:12 UTC 2026
+[exp_conv16] aguardando fim do experimento anterior (128/753) para usar a GPU... Mon Oct 19 20:17:01 UTC 2026
+[21:35:25] [128pos753neg_GNSpec] treino: 90 épocas (rodou todas) | best val_loss=0.4197@89 | val_IoU(honesta)=0.9603@85
+[21:35:33] [128pos753neg_GNSpec] OOT2025 THR=0.50: IoU=0.8244 OE=0.174 CE=0.002 rec=0.826 prec=0.998
+[21:35:40] [128pos753neg_GNSpec] OOT2025 MELHOR THR=0.05: IoU=0.8713 OE=0.123 CE=0.007 rec=0.877 prec=0.993
+[21:35:40] [128pos753neg_GNSpec] FIM
+[exp_posfrac] ===== POSFRAC_OK ===== Mon Oct 19 21:35:41 UTC 2026
+[exp_conv16] GPU livre (used=0 MiB), iniciando Mon Oct 19 21:36:01 UTC 2026
+[21:36:14] ########## TIER2 conv16_nat_GNSpec | GUATO_NORM=gn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t3_conv16_nat ##########
+[exp_conv16] aguardando fim do experimento anterior (128/753) para usar a GPU... Mon Oct 19 21:41:57 UTC 2026
+[exp_conv16] GPU livre (used=0 MiB), iniciando Mon Oct 19 21:41:57 UTC 2026
+[21:42:09] ########## TIER2 conv16_nat_GNSpec | GUATO_NORM=gn GUATO_SPECAUG=1 | -> /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t3_conv16_nat ##########
+[exp_accum753] aguardando fim do treino convencional batch-16 para usar a GPU... Mon Oct 19 21:44:33 UTC 2026
+[exp_pairs] aguardando fim da identificacao 2024 (marcador) para usar a GPU... Mon Oct 19 22:28:57 UTC 2026
+[conv16] DIVERGIU (NaN na ép15) — ABORTADO pelo usuario. ===== CONV16_OK ===== (marcador so p/ liberar a fila; conv16 NAO conta como resultado valido) Mon Oct 19 23:08:06 UTC 2026
+[exp_accum753] GPU livre (used=0 MiB), iniciando identificacao 2024 Mon Oct 19 23:08:33 UTC 2026
+[exp_accum753] aguardando fim do treino convencional batch-16 para usar a GPU... Mon Oct 19 23:23:40 UTC 2026
+[exp_accum753] GPU livre (used=0 MiB), iniciando identificacao 2024 Mon Oct 19 23:23:40 UTC 2026
+[exp_accum753] ===== ACC753_DONE ===== Tue Oct 20 01:44:37 UTC 2026
+[exp_pairs] GPU livre (used=0 MiB), iniciando comparacao de pares Tue Oct 20 01:44:58 UTC 2026
+[exp_pairs] ===== PAIRS_OK ===== Tue Oct 20 08:37:30 UTC 2026

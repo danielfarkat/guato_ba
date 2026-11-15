@@ -1,0 +1,5 @@
+referencia,THR,IoU,omissao_OE,comissao_CE,recall,precisao
+anterior,0.50,0.6835,0.301,0.023,0.699,0.914
+anterior,0.10,0.6996,0.259,0.060,0.741,0.926
+nova (corrigida),0.50,0.7925,0.187,0.026,0.813,0.969
+nova (corrigida),0.10,0.8067,0.138,0.069,0.862,0.926

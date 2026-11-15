@@ -1,0 +1,9 @@
+{
+  "best_iou_val": 0.9918785427785328,
+  "best_params": {
+    "n_estimators": 270,
+    "max_depth": 21,
+    "min_samples_leaf": 1,
+    "max_features": "sqrt"
+  }
+}

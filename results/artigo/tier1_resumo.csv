@@ -1,0 +1,5 @@
+intervencao,THR,IoU,omissao_OE,comissao_CE,nota
+baseline (a) 2024-only,0.50,0.6615,0.307,0.048,limiar padrão de patch
+baseline (a) — THR calibrado,0.25,0.6662,0.286,0.071,ganho desprezível (+0.005); curva plana
+baseline (a) — THR do produto,0.90,0.6329,0.358,0.015,usado no acumulado (comissão mínima)
+AdaBN (BN recalibrado em 2025),0.50,0.0536,0.042,16.865,COLAPSO: resultado negativo informativo

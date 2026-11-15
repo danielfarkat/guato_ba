@@ -1,0 +1,10 @@
+[21:38:57] ========== PRED 2025 (vetor U-Net 128/753 - novo melhor) iniciado ==========
+[21:38:58] modelo carregado | bandas=[0, 1, 2, 3] | in_ch=8 | THR=0.5 MMU=24px
+[21:39:08] cubos 2025 lidos | grid 10651x10648
+[21:39:14] válido∩bioma: 43,539,528 px (38.4% da cena)
+[21:39:23] janelas: 48x48 = 2304 (win=256, stride=224)
+[21:39:35] queimado bruto: 138,378 px (5,535 ha)
+[21:39:38] queimado após MMU 24px: 140,734 px (5,629 ha)
+[21:39:38] raster salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/pred2025/mascara_unet2025_128x753.tif
+[21:39:40] ✅ VETOR salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/pred2025/mascara_unet2025_128x753.gpkg | 41 polígonos | área total 5,629 ha
+[21:39:40] ========== PRED2025_OK ==========

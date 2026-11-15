@@ -1,0 +1,15 @@
+[23:23:53] ========== IDENTIFICACAO 2024 (128/753) iniciada ==========
+[23:23:53] ### ACUMULADO 2024 _t3_753 (ckpt=/home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t3_128pos_753neg/unet_best.pkl) ###
+[01:41:45] [_t3_753] acumulado: 1,431,254 ha | cobertura 74.3%
+[01:41:48] ### vs REFERENCIA fixa 2024 ###
+[01:43:17] [_t3_753] vs REFERENCIA [pantanal_inteiro]: IoU=0.6107 F1=0.7583 OE=0.229 CE=0.254 area_mod=1,431,254ha area_ref=1,386,236ha
+[01:43:22] [_t3_753] vs REFERENCIA [analisado]: IoU=0.7171 F1=0.8352 OE=0.052 CE=0.254 area_mod=1,431,253ha area_ref=1,126,880ha
+[01:43:22] ### vs HLS 2024 (ano todo) ###
+[01:43:41] [_t3_753] vs HLS [pantanal_inteiro]: IoU=0.5028 F1=0.6691 OE=0.486 CE=0.041 area_mod=1,431,254ha area_ref=2,669,853ha
+[01:43:46] [_t3_753] vs HLS [analisado]: IoU=0.6786 F1=0.8086 OE=0.301 CE=0.041 area_mod=1,431,253ha area_ref=1,962,548ha
+[01:44:13] [_t3_753] vs HLS>=24px [pantanal_inteiro]: IoU=0.5032 F1=0.6695 OE=0.486 CE=0.041 area_mod=1,431,254ha area_ref=2,667,834ha
+[01:44:13] CSV salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/artigo/acumulado2024_128x753_vs_ref_hls.csv
+[01:44:13] ### vetorizando p/ QGIS ###
+[01:44:35] VETOR salvo: /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/acumulado/acum2024_unet_128x753.gpkg | 14,633 poligonos | area total 1,431,254 ha
+[01:44:35] RASTER (ja salvo pelo acumulado): /home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/results/acumulado/acum2024_unet_t3_753.tif
+[01:44:35] ========== ACC753_OK ==========

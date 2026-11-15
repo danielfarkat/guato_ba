@@ -1,0 +1,14 @@
+[00:12:38] ===== SO NOS PIXELS DO DATASET (footprint real dos patches) =====
+[00:12:44] par 1 (0530->0719): lendo cubos...
+[00:14:07]   par 1: 4370 patches mantidos | footprint acumulado=10,872,846ha
+[00:14:07] par 2 (0719->0902): lendo cubos...
+[00:15:28]   par 2: 4331 patches mantidos | footprint acumulado=10,889,714ha
+[00:15:29] par 3 (0803->0902): lendo cubos...
+[00:16:51]   par 3: 4303 patches mantidos | footprint acumulado=10,897,183ha
+[00:16:52] PIXELS DO DATASET (uniao 3 pares): 10,897,183ha
+[00:18:33] ----- metricas -----
+[00:18:48] [SO_PIXEL_dataset (footprint∩bioma)] area=10,897,183ha | vs REF IoU=0.6203 rec=0.772 prec=0.759 CE=0.241 | vs HLS IoU=0.5205 rec=0.531 prec=0.963
+[00:18:59] [SO_PIXEL ∩ analisado] area=8,499,133ha | vs REF IoU=0.7290 rec=0.948 prec=0.759 CE=0.241 | vs HLS IoU=0.6868 rec=0.705 prec=0.963
+[00:19:11] [analisado FORA do footprint] area=2,587,096ha | vs REF IoU=0.2483 rec=0.947 prec=0.252 CE=0.748 | vs HLS IoU=0.4348 rec=0.495 prec=0.782
+[00:19:22] [analisado TOTAL (ref p/ comparar)] area=11,086,229ha | vs REF IoU=0.7171 rec=0.948 prec=0.746 CE=0.254 | vs HLS IoU=0.6786 rec=0.699 prec=0.959
+[00:19:22] ===== SOPIX_OK =====

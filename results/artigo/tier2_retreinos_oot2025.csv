@@ -1,0 +1,5 @@
+configuracao,normalizacao,val_honesta_2024,OOT_IoU_THR050,omissao_OE,comissao_CE,OOT_IoU_THR_otimo,THR_otimo
+baseline (a) 2024-only,BatchNorm,0.9703,0.6615,0.307,0.048,0.6662,0.25
+GroupNorm (só),GroupNorm,0.9694,0.6018,0.382,0.028,0.6358,0.05
+Aug. espectral (só),BatchNorm,0.9578,0.5879,0.287,0.212,0.6190,0.90
+GroupNorm + Aug. espectral,GroupNorm,0.9625,0.6835,0.301,0.023,0.6996,0.10
