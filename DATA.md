@@ -21,15 +21,19 @@ melhores hiperparâmetros, tabelas, estudos Optuna). Os dados **pesados** e os *
 
 ## Datasets publicados (Zenodo)
 
-Os patches de treino e teste são publicados como dois zips (cada um com um `README.md` de shapes,
-dtypes, ordem de bandas e uso):
+Os patches de treino e teste são publicados como dois zips. O `README.md` de cada zip (shapes, dtypes,
+ordem de bandas e uso) já está versionado em **[`zenodo/`](zenodo/)** e o notebook
+**[`notebooks/01_datasets_A_e_B.ipynb`](notebooks/01_datasets_A_e_B.ipynb)** mostra como carregar e
+visualizar os dois:
 
-- **Dataset 1 — Treino** (`train_v123_256`): 13.004 patches 256×256, pares bitemporais Sentinel-2
+- **Dataset A — Treino** (`train_v123_256`): 13.004 patches 256×256, pares bitemporais Sentinel-2
   (`T1`, `T2` em `uint16`, 4 bandas `[B04, B8A, B11, B12]`), máscara `Y`, grupo por tile `G` (GroupKFold),
-  `POS`, `SPLIT`.
-- **Dataset 2 — Teste 2025 (OOT)** (`test2025`): 710 patches 256×256, mesma estrutura.
+  `POS`, `SPLIT`. → `zenodo/README_dataset_A_treino.md`
+- **Dataset B — Teste 2025 (OOT)** (`test2025`): 710 patches 256×256, mesma estrutura.
+  → `zenodo/README_dataset_B_teste2025.md`
 
 Bandas: Sentinel-2 L2A, **reflectância = DN / 10000**. Entradas já mascaradas para água e nuvem.
+Rótulo `Y`: `0`=não-queimada, `1`=queimada, `255`=inválido (ignorar).
 Métrica do estudo: **IoU da classe queimada** (TP/(TP+FP+FN)).
 
 > DOI do Zenodo: _(a preencher após a publicação do registro)_
