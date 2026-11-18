@@ -1,4 +1,0 @@
-comparacao,correlacao,IoU,area_ha,area_modelo_ha,n_tiles
-Modelo x HLS,0.962,0.562,2660933.6,2766938.96,34
-Modelo x DETER,0.933,0.479,2169163.32,2766938.96,34
-Modelo x MapBiomas Fogo,0.955,0.517,2216582.36,2766938.96,34

@@ -1,13 +1,14 @@
 # ==========================================================================
-# guato_ba — repositório de CÓDIGO + metadados LEVES do estudo.
+# guato_ba — REPOSITÓRIO MÍNIMO E REPRODUZÍVEL.
 #
-# Entram no repo: código (.py / .ipynb), docs (.md), logs de execução,
-# e os artefatos LEVES e informativos (históricos de treino, melhores
-# hiperparâmetros, curvas, tabelas do artigo, estudos Optuna).
+# Objetivo: permitir reproduzir a comparação ML × DL e o acumulado 2024
+# APÓS baixar os dados do Zenodo (DOI 10.5281/zenodo.24292984) para data/.
 #
-# NÃO entram: dados brutos, patches, rasters, vetores e pesos treinados
-# (data/, dados/, results/, *.npy, *.tif, *.gpkg, *.pkl ...). Esses ficam
-# só no disco / QGIS e são publicados à parte (Zenodo). Ver DATA.md.
+# Entram no repo: código núcleo (main, redes, geo_data_science, accumulate_tile),
+# os notebooks explicativos, docs (README/DATA), requirements, os melhores
+# hiperparâmetros dos modelos ML e as 2 tabelas de resultado que os notebooks
+# exibem. TODO o resto (dados, pesos, rasters, logs, estudos de pesquisa,
+# scripts auxiliares) fica fora.
 # ==========================================================================
 
 # ---- Python ----
@@ -16,12 +17,18 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 
-# ---- Diretórios pesados (dados/saídas): nunca versionar ----
+# ---- Dados / saídas pesadas (baixar do Zenodo; nunca versionar) ----
 data/
 dados/
 dados[ ]/
 "dados "/
-results/
+artigo/
+# results/: ignora tudo, menos as 2 tabelas que os notebooks exibem
+results/*
+!results/artigo/
+results/artigo/*
+!results/artigo/modelos_ml_dl_desempenho.csv
+!results/artigo/acumulado_2024_vs_referencias.csv
 
 # ---- Binários pesados por extensão ----
 *.npy
@@ -34,24 +41,17 @@ results/
 *.gpkg-wal
 *.nc
 *.zip
-
-# ---- Pesos de modelos (grandes) ----
 *.pkl
 *.pt
 *.pth
 *.h5
-# checkpoints temporários de HPO (dirs inteiros)
-hpo/_tmp_resnet34_siam/
-hpo/_tmp_unet/
 
-# ---- Artigo / LaTeX (dissertação; fora do pacote de código) ----
-artigo/
-*.aux
-*.out
-*.synctex.gz
+# ---- Artefatos de pesquisa (ficam só no disco, fora do repo mínimo) ----
+logs/
+hpo/
+deeplearning/
+reference/
+scripts/
+accumulate_landsat.py
 
-# --------------------------------------------------------------------------
-# Observação: os metadados leves de deeplearning/ (historico*.csv, curva.png,
-# hpo_best.json), machine_learning/ (hpo_best.json), hpo/*.db e as tabelas
-# de results/ são incluídos explicitamente (git add -f) — ver README.
-# --------------------------------------------------------------------------
+# (machine_learning/<m>/hpo_best.json não é ignorado — só os *.pkl do diretório.)

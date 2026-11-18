@@ -1,8 +1,0 @@
-[12:45:56] ========== AVALIAÇÃO FINAL (GN+SpecAug) iniciada ==========
-[12:45:56] ### ACUMULADO 2024 _t2gnspec (ckpt=/home/jovyan/ID-QUEIMADAS/jupyter/guato_ba/deeplearning/unet_t2_gn_specaug/unet_best.pkl) ###
-[15:16:56] [_t2gnspec] acumulado: 1,477,254 ha | cobertura 74.3%
-[15:18:14] [_t2gnspec] ACUM vs ref [pantanal_inteiro]: IoU=0.5954 F1=0.7464 OE=0.229 CE=0.295 area_mod=1,477,254ha area_ref=1,386,236ha
-[15:18:19] [_t2gnspec] ACUM vs ref [analisado]: IoU=0.6960 F1=0.8207 OE=0.052 CE=0.363 area_mod=1,477,251ha area_ref=1,126,880ha
-[15:18:26] [_t2gnspec] OOT2025 THR=0.50: IoU=0.7925 OE=0.187 CE=0.026 rec=0.813 prec=0.969
-[15:18:32] [_t2gnspec] OOT2025 MELHOR THR=0.10: IoU=0.8067 OE=0.138 CE=0.069 rec=0.862 prec=0.926
-[15:18:32] ========== FINAL_OK ==========

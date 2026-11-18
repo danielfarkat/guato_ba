@@ -41,16 +41,24 @@ O coração do estudo são **dois conjuntos de patches** `256×256` (20 m/pixel,
 
 As entradas **já vêm mascaradas** para nuvem e água (SCL ∈ {4,5,7} + índice de água **WIW**).
 
+**Baixar os dados** (DOI **[10.5281/zenodo.24292984](https://doi.org/10.5281/zenodo.24292984)**) e colocar os
+`.npy` em **`data/`** na raiz do projeto:
+
+```
+guato_ba/data/
+  ├─ train_v123_256_{T1,T2,Y,G,POS,SPLIT}.npy   # Dataset A
+  └─ test2025_{T1,T2,Y,G}.npy                    # Dataset B
+```
+
 **Carregar é só numpy:**
 ```python
 import numpy as np
-T1 = np.load("train_v123_256_T1.npy", mmap_mode="r")      # (13004,4,256,256)
-Y  = np.load("train_v123_256_Y.npy",  mmap_mode="r")       # {0,1,255}
-x  = T1[0].astype("float32") / 10000                       # reflectância
+T1 = np.load("data/train_v123_256_T1.npy", mmap_mode="r")   # (13004,4,256,256)
+Y  = np.load("data/train_v123_256_Y.npy",  mmap_mode="r")    # {0,1,255}
+x  = T1[0].astype("float32") / 10000                         # reflectância
 ```
 
-> READMEs prontos para acompanhar cada zip do Zenodo: **[`zenodo/`](zenodo/)**.
-> DOI do Zenodo: _(a preencher após a publicação)_.
+> O notebook **[`01_datasets_A_e_B`](notebooks/01_datasets_A_e_B.ipynb)** carrega e visualiza os dois datasets.
 
 ---
 
@@ -134,16 +142,17 @@ Sempre com o interpretador **geospatial** (torch CUDA + rasterio/geopandas):
 cd guato_ba
 P=/opt/conda/envs/geospatial/bin/python
 
-$P main.py reference                      # 1) valida o guardrail (referência ∩ bioma, 0 pixel fora)
-$P main.py data --forcar                  # 2) (re)constrói os patches 2024 (3 pares) + teste OOT 2025
-$P main.py train-dl --modelo unet         # 3) treina um modelo DL (70/30, batch 280, early-stop)
-$P main.py hpo-ml && $P main.py train-ml  # 4) ML: busca Optuna + treino (rf, xgboost, mlp, svm)
-$P main.py evaluate                        # 5) avalia val 2024 + OOT 2025 -> results/tabela_patch.csv
-$P main.py accumulate-full --modelo biatt_unet --cloud 10 --in_bioma 0.50 --thr 0.90 --mmu 24  # 6) produto anual
+# 0) baixe os dados do Zenodo (DOI 10.5281/zenodo.24292984) e coloque os .npy em data/
+
+$P main.py train-ml                       # 1) treina os 4 ML (rf, xgboost, mlp, svm) — lê data/
+$P main.py train-dl --modelo unet         # 2) treina um modelo DL (omita --modelo p/ todos)
+$P main.py evaluate                        # 3) comparação ML × DL (val 2024 + OOT 2025)
+$P main.py accumulate-full --modelo biatt_unet --thr 0.90 --mmu 24  # 4) acumulado 2024
 ```
 
 Modelos DL: `unet, unet_nored, att_unet, biunet, biatt_unet, resnet34_siam, deeplabv3plus`.
-O acumulado é **retomável** (grava um `.npz` por tile em `results/acumulado/_ckpt_*/`).
+Os passos **1–3** usam apenas os dados do Zenodo (em `data/`). O passo **4** (acumulado anual) acessa o
+**Brazil Data Cube** (rede) e o arquivo do bioma (guardrail) — é **retomável** (um `.npz` por tile).
 Dependências em [`requirements.txt`](requirements.txt).
 
 ---
@@ -152,29 +161,24 @@ Dependências em [`requirements.txt`](requirements.txt).
 
 ```
 guato_ba/
-  # --- núcleo (importável; fica na raiz) ---
-  main.py                fluxo (CLI por estágio) + treino_dl + avaliação
-  redes.py               arquiteturas DL + loss + fábricas ML + espaços Optuna
+  # --- código núcleo (tudo o que o pipeline precisa) ---
+  main.py                CLI por estágio: data · train-ml · train-dl · evaluate · accumulate(-full)
+  redes.py               arquiteturas DL (7) + loss + fábricas ML (4) + espaços Optuna
   geo_data_science.py    bioma/grid 5880, STAC BDC, dataset de patches, features, métricas, inferência
-  accumulate_tile.py     acumulado 2024 tile-a-tile (Sentinel)
-  accumulate_landsat.py  acumulado Landsat (transfer da DL 3-bandas)
+  accumulate_tile.py     acumulado anual 2024 tile-a-tile (Sentinel)
 
   notebooks/             00..07 — a série explicativa (ver tabela acima)
-  zenodo/                READMEs dos datasets A e B (acompanham os zips do Zenodo)
-  scripts/               experimentos: split/ acumulado/ ablacao/ eval/ figuras/
-  logs/                  *_resultados.log (logs de execução dos estudos)
+  machine_learning/<m>/  hpo_best.json — melhores hiperparâmetros dos 4 modelos ML
+  results/artigo/        as 2 tabelas de resultado exibidas nos notebooks
 
-  # --- metadados LEVES do estudo (versionados) ---
-  deeplearning/<m>/      historico.csv, curva.png, hpo_best.json   (pesos *.pkl ficam FORA — ver DATA.md)
-  machine_learning/<m>/  hpo_best.json
-  hpo/                   *.db (estudos Optuna, reproduzíveis)
-  results/*.csv          tabela_patch.csv, results/artigo/*.csv
+  requirements.txt  README.md  DATA.md  .gitignore
 
-  README.md  DATA.md  requirements.txt  .gitignore
+  data/                  (você cria) os .npy baixados do Zenodo
 ```
 
-> Os dados pesados (`data/`, `dados/`, rasters de `results/`, pesos `*.pkl`, `artigo/`) **não** entram no
-> git. O que fica fora e como obter: **[DATA.md](DATA.md)**.
+> Este é um **repositório mínimo e reprodutível**: só o necessário para, com os dados do Zenodo, refazer a
+> comparação ML × DL e o acumulado 2024. Os dados pesados e o que não é essencial (pesos, rasters, logs,
+> estudos de pesquisa) **não** entram no git — ver **[DATA.md](DATA.md)**.
 
 ---
 

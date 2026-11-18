@@ -1,7 +1,0 @@
-modelo,sensor,config_nuvem,nuvem_cena,THR,MMU_px,area_queimada_ha,cobertura_pantanal_pct
-biatt_unet,Sentinel-2,area valida in-bioma >= 95% (campeao),<=10%,0.90,24,1416805,74.3
-biatt_unet,Sentinel-2,area valida >= 50%,<=10%,0.90,24,2008816,98.9
-biatt_unet,Landsat,area valida >= 50%,<=10%,0.90,24,1798510,96.5
-biatt_unet,Sentinel-2 + Landsat (uniao),cobertura maxima,-,0.90,24,2518625,99.2
-unet (a) 2024-only,Sentinel-2,area valida in-bioma >= 95%,<=10%,0.90,24,1465962,74.3
-unet (b) 2024+2025,Sentinel-2,area valida in-bioma >= 95%,<=10%,0.90,24,1566616,74.3
