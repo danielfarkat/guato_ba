@@ -166,7 +166,7 @@ guato_ba/
   geo_data_science.py    bioma/grid 5880, STAC BDC, dataset de patches, features, métricas, inferência
   accumulate_tile.py     acumulado anual 2024 tile-a-tile (Sentinel)
 
-  notebooks/             00..07 — a série explicativa (ver tabela acima)
+  notebooks/             00..06 — a série explicativa (ver tabela acima)
   machine_learning/<m>/  hpo_best.json — melhores hiperparâmetros dos 4 modelos ML
   results/artigo/        as 2 tabelas de resultado exibidas nos notebooks
 
@@ -184,4 +184,5 @@ guato_ba/
 ## 📜 Licença e citação
 
 Em homenagem ao povo **Guató**. Ao usar os datasets ou o código, cite o registro do **Zenodo**
-(DOI a preencher) e este repositório: `https://github.com/danielfarkat/guato_ba`.
+(DOI **[10.5281/zenodo.24292984](https://doi.org/10.5281/zenodo.24292984)**) e este repositório:
+`https://github.com/danielfarkat/guato_ba`.
