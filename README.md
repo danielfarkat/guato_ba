@@ -76,7 +76,6 @@ o **05** é descritivo (precisa de BDC + GPU) e o **06** é um tutorial reproduz
 | 04 | [`04_metricas_e_avaliacao`](notebooks/04_metricas_e_avaliacao.ipynb) | por que **IoU da queimada** + resultados (val 2024 + OOT 2025) |
 | 05 | [`05_acumulado_anual`](notebooks/05_acumulado_anual.ipynb) | como vira **produto anual** do Pantanal (tile-a-tile) |
 | 06 | [`06_tutorial_ponta_a_ponta`](notebooks/06_tutorial_ponta_a_ponta.ipynb) | do Brazil Data Cube à cicatriz, reproduzível |
-| 07 | [`07_hpo_optuna_neptune`](notebooks/07_hpo_optuna_neptune.ipynb) | busca de hiperparâmetros (Optuna) |
 
 ---
 
@@ -109,8 +108,8 @@ borda. **Otimização:** AdamW (lr 3e-4), Cosine warm restarts, AMP, dropout 0,2
 estimado só no treino; batch estratificado de 280 patches; early-stop pelo **IoU de validação**.
 
 **Machine learning (4)** — classificação **por pixel**, 11 atributos = reflectância das 4 bandas em T1 e
-T2 + `dNBR`, `dNBRSWIR`, `dMIRBI` (deltas t1−t2): `rf`, `xgboost`, `mlp`, `svm` (hiperparâmetros por
-Optuna em `machine_learning/<m>/hpo_best.json`).
+T2 + `dNBR`, `dNBRSWIR`, `dMIRBI` (deltas t1−t2): `rf`, `xgboost`, `mlp`, `svm` (hiperparâmetros fixos em
+`machine_learning/<m>/hpo_best.json`, carregados direto no `train-ml`).
 
 ---
 
@@ -163,7 +162,7 @@ Dependências em [`requirements.txt`](requirements.txt).
 guato_ba/
   # --- código núcleo (tudo o que o pipeline precisa) ---
   main.py                CLI por estágio: data · train-ml · train-dl · evaluate · accumulate(-full)
-  redes.py               arquiteturas DL (7) + loss + fábricas ML (4) + espaços Optuna
+  redes.py               arquiteturas DL (7) + loss + fábricas ML (4)
   geo_data_science.py    bioma/grid 5880, STAC BDC, dataset de patches, features, métricas, inferência
   accumulate_tile.py     acumulado anual 2024 tile-a-tile (Sentinel)
 

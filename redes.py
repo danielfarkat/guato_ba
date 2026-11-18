@@ -12,7 +12,7 @@ Deep learning (6):
   resnet34_siam — encoder ResNet34 ImageNet siamês + decoder U-Net [in_ch=6]
   deeplabv3plus — backbone residual + ASPP multiescala + decoder [in_ch=8]
 
-Machine learning (4): rf, xgboost, mlp, svm (fábricas + espaços Optuna).
+Machine learning (4): rf, xgboost, mlp, svm (fábricas).
 Loss: Focal Tversky (dominante) + BCE ponderada por borda.
 Entrada dos modelos JÁ vem sem água/nuvem (SCL+WIW aplicados a montante; inválidos zerados).
 Saída dos DL: logits (B,H,W).
@@ -269,7 +269,7 @@ def make_loss(border_w=4.0, tv_a=0.3, tv_b=0.7, tv_g=0.75, w_bce=0.5, ign=255):
     return loss_fn
 
 # ============================================================
-#  Machine learning (4) — fábricas + espaços Optuna padrão
+#  Machine learning (4) — fábricas
 # ============================================================
 def make_rf(**hp):
     from sklearn.ensemble import RandomForestClassifier
@@ -295,37 +295,6 @@ def make_svm(**hp):
     return SVC(**d)
 
 MODELOS_ML = {"rf": make_rf, "xgboost": make_xgb, "mlp": make_mlp, "svm": make_svm}
-
-def espaco_optuna_ml(nome, trial):
-    if nome == "rf":
-        return dict(n_estimators=trial.suggest_int("n_estimators", 120, 350, step=50),
-                    max_depth=trial.suggest_int("max_depth", 10, 28),
-                    min_samples_leaf=trial.suggest_int("min_samples_leaf", 1, 8),
-                    max_features=trial.suggest_categorical("max_features", ["sqrt", "log2"]))
-    if nome == "xgboost":
-        return dict(n_estimators=trial.suggest_int("n_estimators", 200, 800, step=100),
-                    max_depth=trial.suggest_int("max_depth", 3, 10),
-                    learning_rate=trial.suggest_float("learning_rate", 0.02, 0.3, log=True),
-                    subsample=trial.suggest_float("subsample", 0.6, 1.0),
-                    colsample_bytree=trial.suggest_float("colsample_bytree", 0.6, 1.0),
-                    min_child_weight=trial.suggest_int("min_child_weight", 1, 10))
-    if nome == "mlp":
-        h = trial.suggest_categorical("hidden", ["128", "256", "128,64", "256,128", "256,128,64"])
-        return dict(hidden_layer_sizes=tuple(int(z) for z in h.split(",")),
-                    alpha=trial.suggest_float("alpha", 1e-6, 1e-2, log=True),
-                    learning_rate_init=trial.suggest_float("lr", 1e-4, 5e-3, log=True))
-    if nome == "svm":
-        return dict(C=trial.suggest_float("C", 0.1, 100, log=True),
-                    gamma=trial.suggest_categorical("gamma", ["scale", "auto"]))
-    return {}
-
-def espaco_optuna_dl(trial):
-    """Hiperparâmetros tunados no HPO curto dos DL (faixa ampla: LR baixo p/ encoders pré-treinados,
-    tv_b baixo p/ conter comissão de modelos que inundam positivo)."""
-    return dict(lr=trial.suggest_float("lr", 5e-5, 8e-4, log=True),
-                dropout=trial.suggest_float("dropout", 0.0, 0.4),
-                tv_b=trial.suggest_float("tv_b", 0.45, 0.8),
-                w_bce=trial.suggest_float("w_bce", 0.25, 1.5))
 
 if __name__ == "__main__":
     import numpy as np

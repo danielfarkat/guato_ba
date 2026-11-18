@@ -6,9 +6,7 @@ guato_ba · main.py — fluxo do estudo (CLI por estágio).
 Estágios:
   reference   valida referência fixa ∩ bioma (guardrail)
   data        (re)constrói dataset 2024 (SCL_MIN=0.30) + teste 2025 ∩ bioma
-  hpo-ml      Optuna (IoU) nos 4 ML → melhor config
-  train-ml    treina 4 ML com melhor config → .pkl
-  hpo-dl      Optuna curto (IoU) por modelo DL → melhor config
+  train-ml    treina os 4 ML com os hiperparâmetros de hpo_best.json → .pkl
   train-dl    treino final 1000ép early-stop por modelo DL → .pkl + curva(loss+IoU)
   accumulate  acumulado 2024 TILE-A-TILE (jan→dez) por modelo → GeoTIFF ∩ bioma + cobertura %
   evaluate    métricas patch (val/test 2025) + acumulado vs referência ∩ bioma
@@ -204,26 +202,8 @@ def _curva(hist, nome, out_dir, epmax):
     fig.tight_layout(); fig.savefig(f"{out_dir}/curva.png", dpi=110); plt.close(fig)
 
 # ============================================================
-#  HPO DL (curto) e ML
+#  Treino ML (hiperparâmetros fixos de hpo_best.json — sem Optuna)
 # ============================================================
-def hpo_dl(nome, n_trials=10, epochs=40):
-    import optuna
-    from redes import espaco_optuna_dl
-    optuna.logging.set_verbosity(optuna.logging.WARNING)
-    tmp = f"{HPO_DIR}/_tmp_{nome}"
-    def obj(trial):
-        hp = espaco_optuna_dl(trial)
-        best, _, _ = treino_dl(nome, hp, epochs, tmp, tag="hpo", min_stop=0, patience=10**9, log_every=epochs, live=False)
-        return best
-    st = optuna.create_study(direction="maximize", study_name=f"dl_{nome}",
-                             storage=f"sqlite:///{HPO_DIR}/dl_{nome}.db", load_if_exists=True,
-                             pruner=optuna.pruners.MedianPruner())
-    st.optimize(obj, n_trials=n_trials)
-    log(f"[HPO {nome}] melhor IoU(curto)={st.best_value:.4f} | {st.best_params}")
-    json.dump({"best_value": st.best_value, "best_params": st.best_params},
-              open(f"{DL_DIR}/{nome}/hpo_best.json", "w") if os.path.isdir(f"{DL_DIR}/{nome}") else open(f"{HPO_DIR}/dl_{nome}_best.json", "w"), indent=2)
-    return st.best_params
-
 def _feats_split():
     cache = {k: f"{G.DATA_DIR}/feat_{k}.npy" for k in ("Xtr", "ytr", "Xva", "yva")}
     if all(os.path.exists(v) for v in cache.values()):
@@ -238,41 +218,33 @@ def _feats_split():
     return Xtr, ytr, Xva, yva
 
 def _ml_kwargs(nome, params):
-    """Converte os best_params crus do Optuna nos kwargs reais do modelo (trata mlp)."""
+    """Converte os best_params salvos (hpo_best.json) nos kwargs reais do modelo (trata mlp)."""
     bp = dict(params)
     if nome == "mlp":
         if "hidden" in bp: bp["hidden_layer_sizes"] = tuple(int(z) for z in bp.pop("hidden").split(","))
         if "lr" in bp: bp["learning_rate_init"] = bp.pop("lr")
     return bp
 
-def hpo_train_ml(nome, n_trials=40):
-    import optuna, joblib
-    from redes import MODELOS_ML, espaco_optuna_ml
+def train_ml(nome):
+    """Treina um modelo ML com os hiperparâmetros fixos de machine_learning/<nome>/hpo_best.json
+    (sem busca Optuna). Se o arquivo não existir, usa a configuração padrão da fábrica."""
+    import joblib
+    from redes import MODELOS_ML
     od = f"{ML_DIR}/{nome}"
     if os.path.exists(f"{od}/{nome}.pkl"):
-        log(f"[ML {nome}] já treinado — pulando"); return None, None
-    optuna.logging.set_verbosity(optuna.logging.WARNING)
+        log(f"[ML {nome}] já treinado — pulando"); return
+    hb = f"{od}/hpo_best.json"
+    params = json.load(open(hb)).get("best_params", {}) if os.path.exists(hb) else {}
     Xtr, ytr, Xva, yva = _feats_split()
     if nome == "svm":   # SVM é O(n^2): limita amostras
         rng = np.random.default_rng(SEED)
         st_ = rng.choice(len(Xtr), min(40000, len(Xtr)), replace=False); Xtr, ytr = Xtr[st_], ytr[st_]
         sv_ = rng.choice(len(Xva), min(20000, len(Xva)), replace=False); Xva, yva = Xva[sv_], yva[sv_]
-    def iou(clf):
-        clf.fit(Xtr, ytr); p = clf.predict(Xva)
-        TP = int(((p == 1) & (yva == 1)).sum()); FP = int(((p == 1) & (yva == 0)).sum()); FN = int(((p == 0) & (yva == 1)).sum())
-        return TP / (TP + FP + FN) if (TP + FP + FN) else 0.0
-    def obj(trial):
-        return iou(MODELOS_ML[nome](**espaco_optuna_ml(nome, trial)))
-    st = optuna.create_study(direction="maximize", study_name=f"ml_{nome}",
-                             storage=f"sqlite:///{HPO_DIR}/ml_{nome}.db", load_if_exists=True)
-    st.optimize(obj, n_trials=n_trials)
-    best = MODELOS_ML[nome](**_ml_kwargs(nome, st.best_params))
-    best.fit(np.concatenate([Xtr, Xva]), np.concatenate([ytr, yva]))
+    clf = MODELOS_ML[nome](**_ml_kwargs(nome, params))
+    clf.fit(np.concatenate([Xtr, Xva]), np.concatenate([ytr, yva]))
     os.makedirs(od, exist_ok=True)
-    joblib.dump({"modelo": best, "nome": nome, "features": 11, "hp": st.best_params}, f"{od}/{nome}.pkl")
-    json.dump({"best_iou_val": st.best_value, "best_params": st.best_params}, open(f"{od}/hpo_best.json", "w"), indent=2)
-    log(f"[ML {nome}] IoU(val)={st.best_value:.4f} | {st.best_params} → {od}/{nome}.pkl")
-    return st.best_value, st.best_params
+    joblib.dump({"modelo": clf, "nome": nome, "features": 11, "hp": params}, f"{od}/{nome}.pkl")
+    log(f"[ML {nome}] treinado ({'hpo_best.json' if params else 'config padrão'}) → {od}/{nome}.pkl")
 
 # ============================================================
 #  Avaliação patch (val 2024 + teste 2025)
@@ -359,7 +331,7 @@ def comparar_acumulado(modelo):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["reference", "data", "hpo-ml", "train-ml", "hpo-dl", "train-dl",
+    ap.add_argument("stage", choices=["reference", "data", "train-ml", "train-dl",
                                        "accumulate", "accumulate-full", "eval-accum", "evaluate", "mapa-2025", "report"])
     ap.add_argument("--modelo", default=None)
     ap.add_argument("--epochs", type=int, default=1000)
@@ -383,14 +355,9 @@ def main():
     elif a.stage == "data":
         construir_dataset_2024(forcar=a.forcar); construir_teste_2025(forcar=a.forcar)
 
-    elif a.stage == "hpo-ml" or a.stage == "train-ml":
+    elif a.stage == "train-ml":
         mods = [a.modelo] if a.modelo else ["rf", "xgboost", "mlp", "svm"]
-        for nm in mods: hpo_train_ml(nm, n_trials=a.trials or 40)
-
-    elif a.stage == "hpo-dl":
-        from redes import MODELOS_DL
-        mods = [a.modelo] if a.modelo else list(MODELOS_DL)
-        for nm in mods: hpo_dl(nm, n_trials=a.trials or 10)
+        for nm in mods: train_ml(nm)
 
     elif a.stage == "train-dl":
         from redes import MODELOS_DL

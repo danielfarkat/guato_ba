@@ -19,7 +19,6 @@ pystac_client        # acesso ao STAC do BDC (cubos Sentinel-2 / Landsat)
 # --- machine learning ---
 scikit-learn
 xgboost
-optuna               # HPO (estudos .db versionados em hpo/)
 
 # --- deep learning ---
 torch

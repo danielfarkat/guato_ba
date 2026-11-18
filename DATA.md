@@ -1,8 +1,10 @@
 # Dados — o que fica fora do repositório
 
-Este repositório versiona **código** e **metadados leves** (históricos de treino, curvas,
-melhores hiperparâmetros, tabelas, estudos Optuna). Os dados **pesados** e os **pesos treinados**
-**não** são versionados — ficam no disco de trabalho (e abertos no QGIS) e são publicados à parte.
+Este repositório versiona **só o mínimo** para reproduzir: o código núcleo, os notebooks explicativos,
+os **hiperparâmetros dos modelos ML** (`machine_learning/<m>/hpo_best.json`) e as **2 tabelas** de
+resultado exibidas nos notebooks. Os dados **pesados**, os **pesos treinados** e os artefatos de pesquisa
+(logs, scripts, históricos/curvas de treino, acumulados) **não** são versionados — ficam no disco de
+trabalho (e abertos no QGIS) e, no caso dos datasets, são publicados no Zenodo.
 
 ## Não versionado (e por quê)
 
